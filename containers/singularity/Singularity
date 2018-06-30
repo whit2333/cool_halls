@@ -1,0 +1,95 @@
+bootstrap: docker
+From: docker://whit2333/cool_halls
+
+%labels
+  Maintainer "Whitney Armstrong"
+  Version v0.1
+
+%help
+  Help me. I'm in the container.
+
+%setup
+  source /usr/local/bin/thisroot.sh
+  /bin/bash "$@"
+  root-config --version
+
+%post
+  echo "Hello from inside the container"
+  echo "Install additional software here"
+
+%environment
+  export PYTHONPATH=/usr/local/lib:${PYTHONPATH}
+
+#%runscript
+#  #echo "This is what happens when you run the container..."
+#  derp=
+#  if [ -p /dev/stdin ]; then
+#    # If we want to read the input line by line
+#    while IFS= read line; do
+#      #echo "Line: ${line}"
+#      if [ -z ${derp} ]; then
+#        derp="${line}"
+#      else 
+#        derp="${derp}\n${line}"
+#      fi
+#    done
+#  fi
+#  /bin/bash <<EOF
+#  source /usr/local/bin/geant4.sh
+#  echo -e ${derp} | bubble_chamber $@
+#EOF
+#  #exec /usr/local/bin/run_bubble_sim "$@"
+
+
+# =======================
+# global
+# =======================
+%runscript
+  source /usr/local/bin/thisroot.sh
+  /bin/bash "$@"
+
+# =======================
+# root-config
+# =======================
+%apprun root
+  source /usr/local/bin/thisroot.sh
+  root "$@"
+
+%appenv lolcat
+  export PYTHONPATH=/usr/local/lib:$PYTHONPATH
+  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+  BEST_APP=lolcat
+  export BEST_APP
+
+# =======================
+# root-config
+# =======================
+%apprun root-config
+  source /usr/local/bin/thisroot.sh
+  root-config "$@"
+
+# =======================
+# cowsay
+# =======================
+%apprun rootbrowse
+  source /usr/local/bin/thisroot.sh
+  rootbrowse "$@"
+
+# =======================
+# lolcat
+# =======================
+#%appinstall rootls
+#    apt-get -y install lolcat
+#
+#%appenv lolcat
+#    BEST_APP=lolcat
+#    export BEST_APP
+#
+#%apphelp lolcat
+#    lolcat is the best app
+
+%apprun rootls
+  source /usr/local/bin/thisroot.sh
+  rootls "$@"
+
+
