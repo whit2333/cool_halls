@@ -9,7 +9,17 @@ set(CMAKE_MODULE_PATH
 ## OS Specific settings
 include(cmake/os.cmake)
 
+option(USE_CONTAINERS "Install a singularity container image instead of building source." OFF)
+
+find_package(Singularity)
+
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_INSTALL_PREFIX})
+
+if( SINGULARITY_FOUND AND USE_CONTAINERS )
+  message(STATUS "${BoldYellow}Downloading singularity image instead of building from source.${ColourReset}")
+else() 
+
+  message(STATUS "Building libraries from source.")
 
 include(ExternalProject)
 ExternalProject_Add(evio_project 
@@ -48,3 +58,6 @@ ExternalProject_Add(hcana_project
   LOG_DOWNLOAD ON
   STEP_TARGETS download configure build install
   )
+endif()
+
+
