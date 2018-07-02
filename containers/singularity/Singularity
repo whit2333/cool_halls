@@ -7,7 +7,10 @@ From: docker://whit2333/cool_halls
 
 %help
   Cool (A/C) hall's software container
-  
+    Libraries and tools:
+     - evio     : EVIO DAQ data format    https://github.com/whit2333/hallac_evio
+     - analyzer : Hall A analyzer (podd)  https://github.com/whit2333/analyzer
+     - hcana    : Hall C analyzer (hcana) https://github.com/whit2333/hcana
 
 %setup -c /bin/bash
   export SINGULARITY_SHELL=/bin/bash
