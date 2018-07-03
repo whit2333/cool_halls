@@ -2,6 +2,7 @@ Cool (A/C) Halls software super build
 =====================================
 
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/1189)
+[![Docker ](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/whit2333/cool_halls/)
 
 
 ```
