@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.1)
 #project(AC_SOFTWARE VERSION 1.6.0 LANGUAGES C CXX)
 
 set(CMAKE_MODULE_PATH
@@ -16,7 +16,29 @@ find_package(Singularity)
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_INSTALL_PREFIX})
 
 if( SINGULARITY_FOUND AND USE_CONTAINERS )
+
+  set(COOL_HALLS_SINGULARITY_CACHE ${CMAKE_INSTALL_PREFIX}/singularity_cache)
+
   message(STATUS "${BoldYellow}Downloading singularity image instead of building from source.${ColourReset}")
+
+  configure_file(src/hcana.singularity.in hcana @ONLY)
+
+
+  add_custom_target(singularity_tgt ALL
+    #OUTPUT cool_halls.img
+    COMMAND export SINGULARITY_CACHEDIR=${COOL_HALLS_SINGULARITY_CACHE}
+    COMMAND export SINGULARITY_PULLFOLDER=${CMAKE_CURRENT_BINARY_DIR}
+    COMMAND SINGULARITY_CACHEDIR=. singularity pull --name cool_halls.simg shub://whit2333/cool_halls:latest 
+    COMMENT "pulling singularity image"
+    USES_TERMINAL
+    )
+
+  install(FILES 
+    ${CMAKE_CURRENT_BINARY_DIR}/cool_halls.simg
+    ${CMAKE_CURRENT_BINARY_DIR}/hcana 
+    DESTINATION bin
+    PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+  )
 else() 
 
   message(STATUS "Building libraries from source.")
