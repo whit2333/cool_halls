@@ -26,16 +26,18 @@ From: docker://whit2333/cool_halls
 
 %environment
   export PYTHONPATH=/usr/local/lib:${PYTHONPATH}
-
+  export PATH=/usr/local/bin:${PATH}
+  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+  source /usr/local/bin/thisroot.sh
 
 # =======================
 # global
 # =======================
 
 %runscript
-  source /usr/local/bin/thisroot.sh
+  echo "You are running Cool Halls singularity container "
+#  source /usr/local/bin/thisroot.sh
 #  /bin/bash "$@"
-
 #%runscript
 #  #echo "This is what happens when you run the container..."
 #  derp=
@@ -67,9 +69,8 @@ From: docker://whit2333/cool_halls
 
 %appenv lolcat
   export PYTHONPATH=/usr/local/lib:$PYTHONPATH
+  export PATH=/usr/local/bin:$PATH
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-  BEST_APP=lolcat
-  export BEST_APP
 
 # =======================
 # root-config
@@ -79,25 +80,15 @@ From: docker://whit2333/cool_halls
   root-config "$@"
 
 # =======================
-# cowsay
+# rootbrowse
 # =======================
 %apprun rootbrowse
   source /usr/local/bin/thisroot.sh
   rootbrowse "$@"
 
 # =======================
-# lolcat
+# rootls
 # =======================
-#%appinstall rootls
-#    apt-get -y install lolcat
-#
-#%appenv lolcat
-#    BEST_APP=lolcat
-#    export BEST_APP
-#
-#%apphelp lolcat
-#    lolcat is the best app
-
 %apprun rootls
   source /usr/local/bin/thisroot.sh
   rootls "$@"
