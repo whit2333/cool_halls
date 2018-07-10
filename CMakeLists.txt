@@ -21,7 +21,11 @@ if( SINGULARITY_FOUND AND USE_CONTAINERS )
 
   message(STATUS "${BoldYellow}Downloading singularity image instead of building from source.${ColourReset}")
 
-  configure_file(src/hcana.singularity.in hcana @ONLY)
+  configure_file(src/hcana.in        hcana          @ONLY)
+  configure_file(src/root.in         root           @ONLY)
+  configure_file(src/analyzer.in     analyzer       @ONLY)
+  configure_file(src/rootls.in       rootls         @ONLY)
+  configure_file(src/root-config.in  root-config    @ONLY)
 
 
   add_custom_target(singularity_tgt ALL
