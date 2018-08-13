@@ -58,7 +58,7 @@ ExternalProject_Add(evio_project
 ExternalProject_Add(podd_project 
   DEPENDS evio_project-install
   GIT_REPOSITORY    https://github.com/whit2333/analyzer.git
-  GIT_TAG           origin/master
+  GIT_TAG           origin/cmake_demangled
   SOURCE_DIR "${CMAKE_BINARY_DIR}/podd-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/podd-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
@@ -71,7 +71,7 @@ ExternalProject_Add(podd_project
 ExternalProject_Add(hcana_project 
   DEPENDS podd_project-install
   GIT_REPOSITORY    https://github.com/whit2333/hcana.git
-  GIT_TAG           origin/testing
+  GIT_TAG           origin/cmake_demangled
   SOURCE_DIR "${CMAKE_BINARY_DIR}/hcana-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/hcana-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
