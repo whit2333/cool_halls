@@ -21,7 +21,11 @@ if( SINGULARITY_FOUND AND USE_CONTAINERS )
 
   message(STATUS "${BoldYellow}Downloading singularity image instead of building from source.${ColourReset}")
 
-  configure_file(src/hcana.singularity.in hcana @ONLY)
+  configure_file(src/hcana.in        hcana          @ONLY)
+  configure_file(src/root.in         root           @ONLY)
+  configure_file(src/analyzer.in     analyzer       @ONLY)
+  configure_file(src/rootls.in       rootls         @ONLY)
+  configure_file(src/root-config.in  root-config    @ONLY)
 
 
   add_custom_target(singularity_tgt ALL
@@ -36,6 +40,10 @@ if( SINGULARITY_FOUND AND USE_CONTAINERS )
   install(FILES 
     ${CMAKE_CURRENT_BINARY_DIR}/cool_halls.simg
     ${CMAKE_CURRENT_BINARY_DIR}/hcana 
+    ${CMAKE_CURRENT_BINARY_DIR}/analyzer 
+    ${CMAKE_CURRENT_BINARY_DIR}/root 
+    ${CMAKE_CURRENT_BINARY_DIR}/rootls 
+    ${CMAKE_CURRENT_BINARY_DIR}/root-config 
     DESTINATION bin
     PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
   )

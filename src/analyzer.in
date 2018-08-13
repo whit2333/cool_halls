@@ -1,8 +1,5 @@
 #!/bin/bash
-#
-# 
-
-export SINGULARITY_CACHEDIR=@COOL_HALLS_SINGULARITY_CACHE@
+#export SINGULARITY_CACHEDIR=@COOL_HALLS_SINGULARITY_CACHE@
 
 piped_args=
 if [ -p /dev/stdin ]; then
@@ -23,12 +20,8 @@ fi
 #echo -e "${piped_args}" >> ${macName}
 #cat ${macName}
 
-echo -e "${piped_args}" | singularity run \
-  -B /u/group:/group  \
-  -B /lustre:/lustre \
-  -B /w/work:/work \
-  -B /lustre/expphy/volatile:/volatile \
+echo -e "${piped_args}" | singularity run --app analyzer \
   @CMAKE_INSTALL_PREFIX@/bin/cool_halls.simg $@
 
-echo -e ${piped_args} 
-echo  "$@"
+#echo -e ${piped_args} 
+#echo  "$@"

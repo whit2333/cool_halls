@@ -1,0 +1,27 @@
+#!/bin/bash
+#export SINGULARITY_CACHEDIR=@COOL_HALLS_SINGULARITY_CACHE@
+
+piped_args=
+if [ -p /dev/stdin ]; then
+  # If we want to read the input line by line
+  while IFS= read line; do
+    echo "Line: ${line}"
+    if [ -z "$piped_args" ]; then
+      piped_args="${line}"
+    else 
+      piped_args="${piped_args}\n${line}"
+    fi
+  done
+fi
+
+#echo ${piped_args}
+#macName=$(mktemp --suffix=.mac)
+#echo $macName
+#echo -e "${piped_args}" >> ${macName}
+#cat ${macName}
+
+echo -e "${piped_args}" | singularity run --app hcana \
+  @CMAKE_INSTALL_PREFIX@/bin/cool_halls.simg $@
+
+#echo -e ${piped_args} 
+#echo  "$@"
