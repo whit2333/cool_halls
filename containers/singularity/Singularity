@@ -94,10 +94,12 @@ From: docker://whit2333/cool_halls
   root "$@"
 
 %appenv hcana
+  export DB_DIR=DBASE
   export PYTHONPATH=/usr/local/lib:${PYTHONPATH}
   export PATH=/usr/local/bin:${PATH}
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-  export ROOT_INCLUDE_PATH=/usr/local/include/podd:/usr/local/include/hcana
+  export ROOTSYS=/usr/local
+  export ROOT_INCLUDE_PATH=/usr/local/include
   #source /usr/local/bin/thisroot.sh
 
 # =======================
