@@ -28,7 +28,7 @@ From: docker://whit2333/cool_halls
   export PYTHONPATH=/usr/local/lib:${PYTHONPATH}
   export PATH=/usr/local/bin:${PATH}
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-  export ROOT_INCLUDE_PATH=/usr/local/include/podd:/usr/local/include/hcana
+  export ROOT_INCLUDE_PATH=/usr/local/include:/usr/local/include/podd:/usr/local/include/hcana
   #source /usr/local/bin/thisroot.sh
 
 # =======================
