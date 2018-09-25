@@ -11,7 +11,9 @@ include(cmake/os.cmake)
 
 option(USE_CONTAINERS "Install a singularity container image instead of building source." OFF)
 
+if(USE_CONTAINERS)
 find_package(Singularity)
+endif(USE_CONTAINERS)
 
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_INSTALL_PREFIX})
 
