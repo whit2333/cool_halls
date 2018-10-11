@@ -3,7 +3,7 @@ From: docker://whit2333/cool_halls
 
 %labels
   Maintainer "Whitney Armstrong"
-  Version v0.2.2
+  Version v0.2.3
 
 %help
   Cool (A/C) hall's software container
@@ -109,7 +109,7 @@ From: docker://whit2333/cool_halls
 # root-config
 # =======================
 %apprun root-config
-  source /usr/local/bin/thisroot.sh
+  #source /usr/local/bin/thisroot.sh
   root-config "$@"
 
 %appenv root-config
@@ -117,14 +117,14 @@ From: docker://whit2333/cool_halls
   export PATH=/usr/local/bin:${PATH}
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
   export ROOT_INCLUDE_PATH=/usr/local/include/podd:/usr/local/include/hcana
-  source /usr/local/bin/thisroot.sh
+  #source /usr/local/bin/thisroot.sh
 
 
 # =======================
 # rootbrowse
 # =======================
 %apprun rootbrowse
-  source /usr/local/bin/thisroot.sh
+  #source /usr/local/bin/thisroot.sh
   rootbrowse "$@"
 
 %appenv rootbrowse
@@ -138,7 +138,7 @@ From: docker://whit2333/cool_halls
 # rootls
 # =======================
 %apprun rootls
-  source /usr/local/bin/thisroot.sh
+  #source /usr/local/bin/thisroot.sh
   rootls "$@"
 
 %appenv rootls
