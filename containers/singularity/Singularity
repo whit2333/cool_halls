@@ -16,7 +16,6 @@ From: docker://whit2333/cool_halls
   export SINGULARITY_SHELL=/bin/bash
   #ls -lrth /usr/local/bin
   #/bin/bash "$@"
-  #root-config --version
 
 %post -c /bin/bash
   source /usr/local/bin/thisroot.sh

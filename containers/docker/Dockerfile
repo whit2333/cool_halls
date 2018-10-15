@@ -24,7 +24,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y libcurl4-gnutls-d
     && mkdir range-v3/build && cd range-v3/build \
     && cmake ../. -DBUILD_TESTING=OFF -DRANGE_V3_PERF=OFF && make -j3 install \
     && cd /tmp && rm -r range-v3 && git clone https://github.com/fmtlib/fmt.git \
-    && mkdir fmt/build && cd fmt/build && cmake ../. -DFMT_TEST=OFF && make -j4 install \
+    && mkdir fmt/build && cd fmt/build && cmake ../. -DFMT_TEST=OFF  -DBUILD_SHARED_LIBS=ON && make -j4 install \
     && cd /tmp && rm -r fmt && git clone https://github.com/HowardHinnant/date.git \
     && mkdir date/build && cd date/build  && cmake ../. -DENABLE_DATE_TESTING=OFF && make -j4 install 
 
