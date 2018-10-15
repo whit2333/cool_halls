@@ -15,7 +15,6 @@ From: docker://whit2333/cool_halls
 %setup -c /bin/bash
   export SINGULARITY_SHELL=/bin/bash
   #ls -lrth /usr/local/bin
-  #whoami
   #/bin/bash "$@"
   #root-config --version
 
