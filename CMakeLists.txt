@@ -56,7 +56,7 @@ else()
 include(ExternalProject)
 ExternalProject_Add(evio_project 
   GIT_REPOSITORY    https://github.com/whit2333/hallac_evio.git
-  GIT_TAG           origin/testing
+  GIT_TAG           origin/master
   SOURCE_DIR "${CMAKE_BINARY_DIR}/hallac_evio-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/hallac_evio-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
@@ -84,6 +84,19 @@ ExternalProject_Add(hcana_project
   GIT_TAG           origin/cmake_demangled
   SOURCE_DIR "${CMAKE_BINARY_DIR}/hcana-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/hcana-build"
+  CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
+  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j4
+  TEST_COMMAND ""
+  LOG_DOWNLOAD ON
+  STEP_TARGETS download configure build install
+  )
+
+ExternalProject_Add(hallc_tools_project 
+  DEPENDS hcana_project-install
+  GIT_REPOSITORY    https://github.com/whit2333/hallc_tools.git
+  GIT_TAG           origin/master
+  SOURCE_DIR "${CMAKE_BINARY_DIR}/hallc_tools-src"
+  BINARY_DIR "${CMAKE_BINARY_DIR}/hallc_tools-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j4
   TEST_COMMAND ""
