@@ -72,7 +72,7 @@ ExternalProject_Add(podd_project
   SOURCE_DIR "${CMAKE_BINARY_DIR}/podd-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/podd-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
-  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j4
+  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j8
   TEST_COMMAND ""
   LOG_DOWNLOAD ON
   STEP_TARGETS download configure build install
@@ -85,7 +85,7 @@ ExternalProject_Add(hcana_project
   SOURCE_DIR "${CMAKE_BINARY_DIR}/hcana-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/hcana-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
-  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j4
+  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j8
   TEST_COMMAND ""
   LOG_DOWNLOAD ON
   STEP_TARGETS download configure build install
@@ -98,7 +98,7 @@ ExternalProject_Add(hallc_tools_project
   SOURCE_DIR "${CMAKE_BINARY_DIR}/hallc_tools-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/hallc_tools-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
-  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j4
+  BUILD_COMMAND ${CMAKE_COMMAND} --build .  -- -j8
   TEST_COMMAND ""
   LOG_DOWNLOAD ON
   STEP_TARGETS download configure build install

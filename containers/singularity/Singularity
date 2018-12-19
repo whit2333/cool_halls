@@ -3,14 +3,15 @@ From: docker://whit2333/cool_halls
 
 %labels
   Maintainer "Whitney Armstrong"
-  Version v0.2.3
+  Version v0.3.0
 
 %help
   Cool (A/C) hall's software container
     Libraries and tools:
-     - evio     : EVIO DAQ data format    https://github.com/whit2333/hallac_evio
-     - analyzer : Hall A analyzer (podd)  https://github.com/whit2333/analyzer
-     - hcana    : Hall C analyzer (hcana) https://github.com/whit2333/hcana
+     - evio        : EVIO DAQ data format    https://github.com/whit2333/hallac_evio
+     - analyzer    : Hall A analyzer (podd)  https://github.com/whit2333/analyzer
+     - hcana       : Hall C analyzer (hcana) https://github.com/whit2333/hcana
+     - hallc_tools : Hall C analyzer (hcana) https://github.com/whit2333/hallc_tools
 
 %setup -c /bin/bash
   export SINGULARITY_SHELL=/bin/bash

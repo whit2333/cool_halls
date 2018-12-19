@@ -7,16 +7,6 @@ LABEL maintainer "Whitney Armstrong <warmstrong@anl.gov>"
 
 SHELL ["/bin/bash", "-c"]
 
-#USER root
-# Build root from the repo master
-RUN cd /tmp && source /usr/local/bin/thisroot.sh \
-      && git clone https://github.com/whit2333/cool_halls.git \
-      && mkdir -p cool_halls/build \
-      && cd cool_halls/build \
-      && cmake ../. \
-      && make \
-      && cd /tmp && rm -rf /tmp/cool_halls 
-
 RUN apt-get update && apt-get upgrade -y && apt-get install -y libcurl4-gnutls-dev && cd /tmp && git clone --depth=1 https://github.com/nlohmann/json.git \
     && mkdir json/build && cd json/build && cmake ../. -DBUILD_TESTING=OFF \
     && make -j3 install && cd /tmp && rm -rf json \
@@ -27,6 +17,17 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y libcurl4-gnutls-d
     && mkdir fmt/build && cd fmt/build && cmake ../. -DFMT_TEST=OFF  -DBUILD_SHARED_LIBS=ON && make -j4 install \
     && cd /tmp && rm -r fmt && git clone https://github.com/HowardHinnant/date.git \
     && mkdir date/build && cd date/build  && cmake ../. -DENABLE_DATE_TESTING=OFF && make -j4 install 
+
+#USER root
+# Build root from the repo master
+RUN cd /tmp &&  source /usr/local/bin/thisroot.sh \
+      && git clone https://github.com/whit2333/cool_halls.git \
+      && mkdir -p cool_halls/build \
+      && cd cool_halls/build \
+      && cmake ../. \
+      && make \
+      && cd /tmp && rm -rf /tmp/cool_halls 
+
 
 #RUN useradd -ms /bin/bash -d /opt/user user
 #USER user
