@@ -94,7 +94,7 @@ ExternalProject_Add(hcana_project
 ExternalProject_Add(hallc_tools_project 
   DEPENDS hcana_project-install
   GIT_REPOSITORY    https://github.com/whit2333/hallc_tools.git
-  GIT_TAG           origin/master
+  #GIT_TAG           origin/master
   SOURCE_DIR "${CMAKE_BINARY_DIR}/hallc_tools-src"
   BINARY_DIR "${CMAKE_BINARY_DIR}/hallc_tools-build"
   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}" "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}"
