@@ -3,7 +3,7 @@ From: docker://whit2333/cool_halls
 
 %labels
   Maintainer "Whitney Armstrong"
-  Version v0.3.0
+  Version v0.3.2
 
 %help
   Cool (A/C) hall's software container
